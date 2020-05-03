@@ -40,10 +40,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormComponent } from './mat-form/mat-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MatFormComponent
   ],
   imports: [
     BrowserModule,
