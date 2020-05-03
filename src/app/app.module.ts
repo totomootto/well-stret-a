@@ -41,11 +41,13 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormComponent } from './mat-form/mat-form.component';
+import { TableActionsComponent } from './table-actions/table-actions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatFormComponent
+    MatFormComponent,
+    TableActionsComponent
   ],
   imports: [
     BrowserModule,
