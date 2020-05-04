@@ -51,6 +51,7 @@ import {
   ActionsComponent,
   DialogContentExampleDialog,
 } from "./actions/actions.component";
+import { AddActionFormComponent } from './add-action-form/add-action-form.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {
     TableActionsComponent,
     ActionsComponent,
     DialogContentExampleDialog,
+    AddActionFormComponent,
   ],
   entryComponents: [ActionsComponent, DialogContentExampleDialog],
 

@@ -1,0 +1,58 @@
+<div class="example-container">
+  <form [formGroup]="options" (ngSubmit)="saveForm()">
+    <!-- <mat-checkbox [formControl]="hideRequiredControl">Hide required marker</mat-checkbox> -->
+
+    <!-- <div>
+      <label>Float label: </label>
+      <mat-radio-group [formControl]="floatLabelControl">
+        <mat-radio-button value="auto">Auto</mat-radio-button>
+        <mat-radio-button value="always">Always</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+
+    <!-- <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <input matInput placeholder="הכנס שם פעולה" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>סוג פעולה לדוגמה</mat-label>
+      <input matInput placeholder="הכנס סוג פעולה" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-select required>
+        <mat-option>-- None --</mat-option>
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+      <mat-label><mat-icon>favorite</mat-icon> <b> רקע</b> </mat-label>
+    </mat-form-field> -->
+
+    <label>
+      שם
+      <input type="text" formControlName="name" required />
+    </label>
+
+    <label>
+      סוג
+      <input type="text" formControlName="type" required />
+    </label>
+
+    <label>
+      תאריך התחלה
+      <input type="date" formControlName="startDate" required />
+    </label>
+
+    <label>
+      תאריך סיום
+      <input type="date" formControlName="endDate" required />
+    </label>
+    <label>
+      פרטים נוספים
+      <input type="text" formControlName="endDate" />
+    </label>
+
+    <button [disabled]="!options.valid" type="submit">
+      שמור
+    </button>
+  </form>
+</div>

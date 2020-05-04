@@ -23,5 +23,6 @@ export class ActionsComponent implements OnInit {
 @Component({
   selector: "dialog-content-example-dialog",
   templateUrl: "dialog-content-example-dialog.html",
+  styleUrls: ["./actions.component.scss"],
 })
 export class DialogContentExampleDialog {}
