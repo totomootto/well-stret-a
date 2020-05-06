@@ -8,6 +8,9 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class ActionsComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
+  details = "tt";
+  name = "tt";
+  type = "tt";
 
   ngOnInit() {}
   clickAddAction() {
@@ -17,6 +20,12 @@ export class ActionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+  onSubmit(f) {
+    console.log(f);
+    console.log(this.details);
+    console.log(this.name);
+    console.log(this.type);
   }
 }
 

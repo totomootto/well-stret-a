@@ -44,14 +44,20 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MatFormComponent } from "./mat-form/mat-form.component";
 import { TableActionsComponent } from "./table-actions/table-actions.component";
 import {
   ActionsComponent,
   DialogContentExampleDialog,
 } from "./actions/actions.component";
-import { AddActionFormComponent } from './add-action-form/add-action-form.component';
+import { AddActionFormComponent } from "./add-action-form/add-action-form.component";
+import { StoreModule } from "@ngrx/store";
+import { counterReducer } from "./store/counter.reducer";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "../environments/environment";
+import * as fromWellTypes from "./well-types.reducer";
+import { GenericInputComponent } from "./generic-input/generic-input.component";
 
 @NgModule({
   declarations: [
@@ -61,6 +67,7 @@ import { AddActionFormComponent } from './add-action-form/add-action-form.compon
     ActionsComponent,
     DialogContentExampleDialog,
     AddActionFormComponent,
+    GenericInputComponent,
   ],
   entryComponents: [ActionsComponent, DialogContentExampleDialog],
 
@@ -68,6 +75,7 @@ import { AddActionFormComponent } from './add-action-form/add-action-form.compon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({ count: counterReducer }),
     MatFormFieldModule,
     MatOptionModule,
     MatAutocompleteModule,
@@ -107,6 +115,14 @@ import { AddActionFormComponent } from './add-action-form/add-action-form.compon
     MatTreeModule,
     MatSelectModule,
     ReactiveFormsModule,
+    FormsModule,
+
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    StoreModule.forFeature(
+      fromWellTypes.wellTypesFeatureKey,
+      fromWellTypes.reducer
+    ),
   ],
   providers: [
     {

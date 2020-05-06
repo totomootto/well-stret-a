@@ -10,3 +10,40 @@
   </button>
 </div>
 <app-table-actions></app-table-actions>
+
+<form class="form-signin" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+  <app-generic-input
+    [placeholder]="'בבקשה הכנס את שם הפעולה'"
+    [isRequired]="true"
+    [errorMsg]="'בבקשה הכנס את שם הפעולה '"
+    [label]="'שם הפעולה'"
+    ngModel
+    name="name"
+    [(ngModel)]="name"
+  ></app-generic-input>
+
+  <app-generic-input
+    [placeholder]="'בבקשה הכנס את סוג הפעולה'"
+    [isRequired]="false"
+    [errorMsg]="'בבקשה הכנס את שם הפעולה '"
+    [label]="'סוג הפעולה'"
+    ngModel
+    name="type"
+    [(ngModel)]="type"
+  ></app-generic-input>
+
+  <app-generic-input
+    [placeholder]="'בבקשה הכנס פרטים נוספים אודות הפעולה'"
+    [isRequired]="false"
+    [errorMsg]="'נא להכניס פרטים נוספים בפורמט הנכון '"
+    [label]="'פרטים נוספים'"
+    [pattern]="'netanel'"
+    ngModel
+    name="details"
+    [(ngModel)]="details"
+  ></app-generic-input>
+
+  <button [disabled]="!f.valid" type="submit">
+    שמור
+  </button>
+</form>

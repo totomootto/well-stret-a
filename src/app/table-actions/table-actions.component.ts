@@ -6,6 +6,10 @@ import {
   transition,
   trigger,
 } from "@angular/animations";
+import { ActionApp } from "../models/action.model";
+import { Store, select } from "@ngrx/store";
+import { selectActions } from "../well-types.selectors";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-table-actions",
@@ -23,7 +27,7 @@ import {
   ],
 })
 export class TableActionsComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store<{ ActionsState }>) {}
 
   ngOnInit() {}
   dataSource = ELEMENT_DATA;
