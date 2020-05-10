@@ -11,6 +11,7 @@ export class ActionsComponent implements OnInit {
   details = "tt";
   name = "tt";
   type = "tt";
+  date = new Date();
 
   ngOnInit() {}
   clickAddAction() {
@@ -26,6 +27,7 @@ export class ActionsComponent implements OnInit {
     console.log(this.details);
     console.log(this.name);
     console.log(this.type);
+    console.log(this.date);
   }
 }
 

@@ -11,7 +11,7 @@
 </div>
 <app-table-actions></app-table-actions>
 
-<form class="form-signin" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+<form class="form-signin" (ngSubmit)="onSubmit(f.value)" #f="ngForm" dir="rtl">
   <app-generic-input
     [placeholder]="'בבקשה הכנס את שם הפעולה'"
     [isRequired]="true"
@@ -42,6 +42,16 @@
     name="details"
     [(ngModel)]="details"
   ></app-generic-input>
+
+  <app-generic-input-date
+    [placeholder]="'הכנס תאריך סיום'"
+    [isRequired]="true"
+    [errorMsg]="'התאריך לא יכול להיות קטן מתאריך נוכחי'"
+    [label]="'תאירך סיום'"
+    ngModel
+    name="date"
+    [(ngModel)]="date"
+  ></app-generic-input-date>
 
   <button [disabled]="!f.valid" type="submit">
     שמור

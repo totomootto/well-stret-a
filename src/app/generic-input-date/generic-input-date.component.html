@@ -1,5 +1,5 @@
-<div class="form-label-group">
-  <!-- <input
+<div class="form-label-group" appIdentityRevealed>
+  <input
     class="form-control"
     [type]="type"
     #input
@@ -7,23 +7,7 @@
     (blur)="onTouched()"
     [disabled]="disabled"
     [placeholder]="placeholder"
-  /> -->
-
-  <mat-form-field class="example-full-width">
-    <mat-label>{{ label }}</mat-label>
-    <input
-      dir="rtl"
-      matInput
-      placeholder="{{ placeholder }}"
-      class="form-control"
-      [type]="type"
-      #input
-      (input)="onChange($event.target.value)"
-      (blur)="onTouched()"
-      [disabled]="disabled"
-      [required]="isRequired"
-    />
-  </mat-form-field>
+  />
 
   <div class="d-flex">
     <span
@@ -39,9 +23,10 @@
       <i class="fas fa-check"></i>
     </span>
 
-    <!-- <label class="mr-auto">
+    <label class="mr-auto"
+      >{{ label }}
       <span class="required" *ngIf="isRequired">*</span>
-    </label> -->
+    </label>
 
     <span
       class="error"
@@ -50,5 +35,6 @@
       "
       >{{ errorMsg }}</span
     >
+    {{ controlDir.control.valid }}
   </div>
 </div>

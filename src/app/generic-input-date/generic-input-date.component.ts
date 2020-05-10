@@ -19,30 +19,21 @@ import {
   NgControl,
   NgForm,
   ValidationErrors,
-  FormGroup,
 } from "@angular/forms";
 
+import * as moment from "moment";
+
 @Component({
-  selector: "app-generic-input",
-  templateUrl: "./generic-input.component.html",
-  styleUrls: ["./generic-input.component.scss"],
-  // providers: [{
-  //   provide: NG_VALUE_ACCESSOR,
-  //   multi: true,
-  //   useExisting: GenericInputComponent
-  // },
-  // {
-  //   provide: NG_VALIDATORS,
-  //   multi: true,
-  //   useExisting: GenericInputComponent
-  // }]
+  selector: "app-generic-input-date",
+  templateUrl: "./generic-input-date.component.html",
+  styleUrls: ["./generic-input-date.component.scss"],
 })
-export class GenericInputComponent
+export class GenericInputDateComponent
   implements ControlValueAccessor, Validator, OnInit {
   @ViewChild("input", { static: false }) input: ElementRef;
   disabled;
 
-  @Input() type = "text";
+  @Input() type = "date";
   @Input() isRequired: boolean = false;
   @Input() pattern: string = null;
   @Input() label: string = null;
@@ -64,6 +55,7 @@ export class GenericInputComponent
     if (this.pattern) {
       validators.push(Validators.pattern(this.pattern));
     }
+    validators.push(this.dateSmaleFromNow);
 
     control.setValidators(validators);
     control.updateValueAndValidity();
@@ -94,10 +86,62 @@ export class GenericInputComponent
     if (this.isRequired) {
       validators.push(Validators.required);
     }
+
     if (this.pattern) {
       validators.push(Validators.pattern(this.pattern));
     }
 
+    var now = new Date();
+
+    if (
+      this.input &&
+      this.input.nativeElement &&
+      this.input.nativeElement.value < now
+    ) {
+      validators.push(Validators.compose(null));
+    }
+
     return validators;
   }
+
+  dateSmaleFromNow: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    var now = new Date();
+    if (
+      this.input &&
+      this.input.nativeElement &&
+      this.input.nativeElement.value &&
+      moment(this.input.nativeElement.value)
+        .startOf("day")
+        .diff(moment(now).startOf("day")) < 0
+    ) {
+      return { dateSmaleFromNow: true };
+    } else {
+      return null;
+    }
+  };
 }
+// providers: [{ provide: NG_VALIDATORS, useExisting: IdentityRevealedValidatorDirective, multi: true }]
+
+// export class IdentityRevealedValidatorDirective implements Validator {
+//   validate(control: AbstractControl): ValidationErrors {
+//     return identityRevealedValidator(control)
+//   }
+// }
+
+/** A hero's name can't match the hero's alter ego */
+// export const dateSmaleFromNow: ValidatorFn = (
+//   control: AbstractControl
+// ): ValidationErrors | null => {
+//   var now = new Date();
+//   if (
+//     this.input &&
+//     this.input.nativeElement &&
+//     this.input.nativeElement.value < now
+//   ) {
+//     return { dateSmaleFromNow: true };
+//   } else {
+//     return null;
+//   }
+// };

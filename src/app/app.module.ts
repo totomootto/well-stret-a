@@ -58,6 +58,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import * as fromWellTypes from "./well-types.reducer";
 import { GenericInputComponent } from "./generic-input/generic-input.component";
+import { GenericInputDateComponent } from './generic-input-date/generic-input-date.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { GenericInputComponent } from "./generic-input/generic-input.component";
     DialogContentExampleDialog,
     AddActionFormComponent,
     GenericInputComponent,
+    GenericInputDateComponent,
   ],
   entryComponents: [ActionsComponent, DialogContentExampleDialog],
 
